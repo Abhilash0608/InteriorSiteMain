@@ -1,3 +1,11 @@
+import asb from '../assets/asb.svg'
+import Century from '../assets/Century.svg'
+import elite from '../assets/elite.svg'
+import epson from '../assets/epson.svg'
+import hettich from '../assets/hettich.svg'
+import jbl from '../assets/jbl.svg'
+import sony from '../assets/sony.svg'
+import yamaha from '../assets/yamaha.svg'
 export const NavLinks = [
     { id: 1, title: 'Home', path: '/' },
     { id: 2, title: 'Services', path: 'services' },
@@ -54,4 +62,15 @@ export const workAchievements=[
         title:"35",
         description:"Professional Team"
     }
+]
+
+export const associateBrands=[
+    {id:1,src:asb,alt:"asb"},
+    {id:2,src:Century,alt:"century"},
+    {id:3,src:elite,alt:"elite"},
+    {id:4,src:epson,alt:"epson"},
+    {id:5,src:hettich,alt:"hettich"},
+    {id:6,src:jbl,alt:"Jbl"},
+    {id:7,src:yamaha,alt:"Jbl"},
+    {id:8,src:sony,alt:"sony"},
 ]

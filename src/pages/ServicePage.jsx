@@ -1,13 +1,12 @@
 import { useSelector } from 'react-redux'
-import image1 from '../assets/image1.jpg'
 import Navbar from '../components/Navbar'
-import { serviceData } from '../utils/servicesData'
 import './servicePage.css'
+import Slider from '../components/Slider'
 const ServicePage = () => {
     const currentService = useSelector((state) => state.services.currentService)
 
     return (
-        <main className="servicesPage-main  ">
+        <main className="servicesPage-main  " key={currentService.id}>
             <div className=''>
 
                 <div className="services-bg">
@@ -25,26 +24,23 @@ const ServicePage = () => {
 
                 <div className="content-container w-[90vw] m-auto">
                     <div
-                        className="image-container"
-                        style={{ backgroundImage: `url(${image1})` }}
-                    ></div>
 
-                    <div className="services-list">
-                        <h2>Main Services</h2>
-                        <ul>
-                            {serviceData.map((item) => {
-                                return <li>{item.title}</li>
-                            })}
-                        </ul>
+                    >
+                        <Slider />
+                    </div>
+
+
+                </div>
+                <div className="services-list max-w-[90vw] m-auto">
+                    <div className="details-section ">
+                        <h1>{currentService.title}</h1>
+                        <p>
+                            {currentService.description}
+                        </p>
                     </div>
                 </div>
 
-                <div className="details-section w-[90vw]">
-                    <h1>{currentService.title}</h1>
-                    <p>
-                        {currentService.description}
-                    </p>
-                </div>
+
             </div>
 
         </main>

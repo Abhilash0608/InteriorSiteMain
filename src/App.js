@@ -9,6 +9,7 @@ import Slider from './components/Slider';
 import TestimonialSlider from './components/Testimonails';
 import { FaWhatsapp } from 'react-icons/fa';
 import ServicePage from './pages/ServicePage';
+import AssociateBrands from './components/AssociateBrands';
 
 function App() {
   const phoneNumber = '9848333169'
@@ -27,6 +28,7 @@ function App() {
                 <Slider />
                 <OurServices />
                 <Aboutus />
+                <AssociateBrands/>
                 <TestimonialSlider />
               </>
             }

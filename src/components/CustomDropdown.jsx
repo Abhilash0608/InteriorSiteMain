@@ -11,15 +11,18 @@ const CustomDropdown = ({ navbarHover }) => {
     const currentService = useSelector((state) => state.services.currentService)
 
     const toggleDropdown = () => setIsOpen((prev) => !prev);
-    const handleBlur = () => {
-
-        setIsOpen(false);
-    }// Close on blur
+    const handleBlur = (event) => {
+        // Prevent closing if the next focused element is inside the dropdown
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+            setIsOpen(false);
+        }
+    };
+    // Close on blur
     const handleSelect = (option) => {
         setIsOpen(false);
-        dispatch(selectSerivce(option))
+        console.log(option, "option")
+        dispatch(selectSerivce(option.id))
     };
-    console.log(navbarHover, ">>>>>")
     return (
 
         <div className="relative inline-block text-left " onBlur={handleBlur}>
@@ -38,13 +41,14 @@ const CustomDropdown = ({ navbarHover }) => {
             {/* Dropdown Menu */}
             {isOpen && (
                 <ul
+                    onBlur={handleBlur}
                     className="absolute z-50 mt-2 w-72 bg-white border border-gray-300 rounded-lg shadow-lg w-full"
-                    onMouseLeave={handleBlur}
                 >
                     {serviceData.map((option) => (
                         <li
                             key={option.id}
                             onClick={() => handleSelect(option)}
+                            tabIndex={0}
                             className={`px-4 py-2 cursor-pointer text-black hover:bg-gray-100 
                                 ${currentService && currentService.id === option.id ? 'bg-gray-200 font-semibold' : ''}`}
                         >

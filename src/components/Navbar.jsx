@@ -4,7 +4,8 @@ import logo from '../assets/logo.svg'
 import { NavLinks, serviceData } from '../utils/servicesData';
 import { useLocation } from 'react-router-dom';
 import CustomDropdown from './CustomDropdown';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { selectSerivce } from '../store/slices/services/servicesSlice';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +15,7 @@ export default function Navbar() {
     const menuButtonRef = useRef(null);
     const location = useLocation();
     const isServices = location.pathname == '/services'
+    const dispatch = useDispatch()
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
@@ -37,9 +39,7 @@ export default function Navbar() {
         setShowSubMenu(false);
     };
 
-    const getServiceLink = (service) => {
-        return `/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`;
-    };
+
 
     return (
         <nav className="nav-header  px-4 py-2    sticky top-0 z-10" onMouseEnter={() => setNavbarHover(true)} onMouseLeave={() => setNavbarHover(false)}>
@@ -48,12 +48,15 @@ export default function Navbar() {
                 {/* Logo and Name */}
                 <div className={`flex items-center ${isServices ? "hidden" : "flex"} lg:flex`}>
                     <div className='w-24 overflow-hidden'>
-                        <motion.img
-                            src={logo}
-                            alt="Logo"
-                            className="h-full w-full"
-                            style={{ transform: "scale(1.7)" }}
-                        />
+                        <a href={'/'} className='cursor-pointer'>
+                            <motion.img
+                                src={logo}
+                                alt="Logo"
+                                className="h-full w-full"
+                                style={{ transform: "scale(1.7)" }}
+                            />
+                        </a>
+
                     </div>
                     <motion.h1
                         className="text-xl hidden lg:flex font-bold font-serif ml-1.5"
@@ -78,7 +81,7 @@ export default function Navbar() {
                                         onMouseEnter={() => setShowMenu(true)}
                                         className="relative"
                                     >
-                                        <a href={`${link.path}`} className="cursor-pointer">
+                                        <a  className="cursor-pointer">
                                             {link.title}
                                         </a>
 
@@ -93,7 +96,7 @@ export default function Navbar() {
                                             >
                                                 {serviceData.map((service) => (
                                                     <li key={service.id} className="py-1 px-2 hover:bg-gray-200 rounded">
-                                                        <a href={getServiceLink(service)} className="">
+                                                        <a href={"/services"} onClick={() => dispatch(selectSerivce(service.id))} className="">
                                                             {service.title}
                                                         </a>
                                                     </li>
@@ -132,7 +135,7 @@ export default function Navbar() {
 
                     >
                         <ul className="flex flex-col space-y-4">
-                            {['Home', 'Services', 'Testimonials', 'About Us', 'Contact Us'].map((link, ind) => (
+                            {NavLinks.map((link, ind) => (
                                 <li key={link} className="font-bold text-lg text-gray-800">
                                     {ind === 1 ? (
                                         <div>
@@ -140,7 +143,7 @@ export default function Navbar() {
                                                 onClick={() => setShowSubMenu(!showSubMenu)}
                                                 className="flex items-center justify-between cursor-pointer"
                                             >
-                                                <span>{link}</span>
+                                                <span>{link.title}</span>
                                                 <span>{showSubMenu ? '-' : '+'}</span>
                                             </div>
 
@@ -154,7 +157,7 @@ export default function Navbar() {
                                                 >
                                                     {serviceData.map((service) => (
                                                         <li key={service.id} className="text-gray-600 hover:text-[#ab8925]">
-                                                            <a href={getServiceLink(service)}>
+                                                            <a href={"/services"} onClick={() => dispatch(selectSerivce(service.id))}>
                                                                 {service.title}
                                                             </a>
                                                         </li>
@@ -163,8 +166,8 @@ export default function Navbar() {
                                             )}
                                         </div>
                                     ) : (
-                                        <a href={`#${link.toLowerCase()}`} className="hover:text-[#ab8925]">
-                                            {link}
+                                        <a href={`${link.path}`} className="hover:text-[#ab8925]">
+                                            {link.title}
                                         </a>
                                     )}
                                 </li>

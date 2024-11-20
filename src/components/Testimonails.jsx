@@ -34,7 +34,7 @@ const TestimonialSlider = () => {
             <div className="w-full flex justify-between items-center bg-white rounded-lg p-6 text-center">
                 {/* Previous Arrow */}
                 <button onClick={prevSlide} >
-                    <FaArrowLeft className="ml-2 text-lg sm:text-xl text-gray-500" />
+                    <FaArrowLeft className="ml-2 text-lg mr-4 sm:text-xl text-gray-500" />
                     {/* Show image on larger screens */}
 
                 </button>
@@ -43,7 +43,7 @@ const TestimonialSlider = () => {
                 <div className="px-6 py-6 testimonical-card w-[90%] sm:w-[60%]">
                     <div className="flex justify-center mb-2">
                         {[...Array(testimonials[current].rating)].map((_, index) => (
-                            <FaStar key={index} className="text-yellow-500" />
+                            <FaStar key={index} className="text-[#8A7C56]" />
                         ))}
                     </div>
                     <p className="text-gray-700 italic mb-4">"{testimonials[current].text}"</p>
@@ -54,7 +54,7 @@ const TestimonialSlider = () => {
                 <button onClick={nextSlide} >
                     {/* Show image on larger screens */}
 
-                    <FaArrowRight className="ml-2 text-lg sm:text-xl text-gray-500" />
+                    <FaArrowRight className="ml-2 ml-4 text-lg sm:text-xl text-gray-500" />
                 </button>
             </div>
         </div>
