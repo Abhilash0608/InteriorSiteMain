@@ -1,4 +1,5 @@
 import { associateBrands } from "../utils/servicesData";
+import Carousel from "./Caoursel";
 import SectionHeader from "./SectionHeader";
 
 const AssociateBrands = () => {
@@ -7,7 +8,7 @@ const AssociateBrands = () => {
             <div>
                 <SectionHeader mainHeading={"Our Associate"} subHeading={"Brands"} />
             </div>
-            <div className="w-full grid grid-cols-2 place-items-center sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="w-full grid grid-cols-2 place-items-center  md:grid-cols-4 md:gap-6">
                 {associateBrands.map((item, index) => (
                     <img 
                         key={index} 

@@ -9,7 +9,7 @@ import yamaha from '../assets/yamaha.svg'
 export const NavLinks = [
     { id: 1, title: 'Home', path: '/' },
     { id: 2, title: 'Services', path: 'services' },
-    { id: 3, title: 'Testimonials', path: '/' },
+    { id: 3, title: 'Products', path: 'products' },
     { id: 4, title: 'About Us', path: '/' },
     { id: 5, title: 'Contact Us', path: 'contact' }
   ];

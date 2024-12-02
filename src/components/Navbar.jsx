@@ -6,9 +6,11 @@ import { useLocation } from 'react-router-dom';
 import CustomDropdown from './CustomDropdown';
 import { useDispatch } from 'react-redux';
 import { selectSerivce } from '../store/slices/services/servicesSlice';
+import Logo from './Logo';
+import NavLinksList from './NavLinksList';
+import MobileMenu from './MobileMenu';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [showMenu, setShowMenu] = useState(false);
     const [showSubMenu, setShowSubMenu] = useState(false);
     const [navbarHover, setNavbarHover] = useState(false)
     const dropdownRef = useRef(null);
@@ -46,7 +48,7 @@ export default function Navbar() {
             <div className='nav-header-wrapper flex items-center justify-between '>
 
                 {/* Logo and Name */}
-                <div className={`flex items-center ${isServices ? "hidden" : "flex"} lg:flex`}>
+                {/* <div className={`flex items-center ${isServices ? "hidden" : "flex"} lg:flex`}>
                     <div className='w-24 overflow-hidden'>
                         <a href={'/'} className='cursor-pointer'>
                             <motion.img
@@ -63,13 +65,13 @@ export default function Navbar() {
                     >
                         Halchemy Interior
                     </motion.h1>
-                </div>
+                </div> */}
+                <Logo isServices={isServices} />
                 {/*Desktop Dropdown*/}
                 {isServices && <CustomDropdown navbarHover={navbarHover} />}
                 {/* Desktop Navigation Links */}
-                <ul className="hidden md:flex space-x-4">
+                {/* <ul className="hidden md:flex space-x-4">
                     {NavLinks.map((link, ind) => (
-                        // Conditionally render the links if the current route is not '/services'
                         (location.pathname !== '/services' || !['About Us', 'Services', 'Contact Us'].includes(link.title)) && (
                             <motion.li
                                 key={link.title}
@@ -85,7 +87,6 @@ export default function Navbar() {
                                             {link.title}
                                         </a>
 
-                                        {/* Dropdown menu for Services */}
                                         {showMenu && (
                                             <motion.ul
                                                 onMouseLeave={() => setShowMenu(false)}
@@ -110,28 +111,33 @@ export default function Navbar() {
                             </motion.li>
                         )
                     ))}
-                </ul>
+                </ul> */}
+                <NavLinksList dispatch={dispatch} isServices={isServices}/>
 
                 {/* Mobile Menu Toggle */}
+                {/* <MobileMenu isOpen={isOpen}
+                    toggleMenu={toggleMenu}
+                    showSubMenu={showSubMenu}
+                    setShowSubMenu={setShowSubMenu}
+                    dispatch={dispatch}/> */}
                 <div
                     ref={menuButtonRef}
                     className="md:hidden   flex flex-col space-y-1 cursor-pointer"
                     onClick={toggleMenu}
 
                 >
-                    <span className={`block w-6 h-0.5  lg:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
-                    <span className={`block w-6 h-0.5  lg:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
-                    <span className={`block w-6 h-0.5  lg:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
+                    <span className={`block w-6 h-0.5 bg-white md:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
+                    <span className={`block w-6 h-0.5 bg-white md:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
+                    <span className={`block w-6 h-0.5 bg-white md:bg-gray-600 ${!isServices ? "bg-gray-600" : "bg-white"}`}></span>
                 </div>
 
-                {/* Mobile Menu */}
                 {isOpen && (
                     <motion.div
                         ref={dropdownRef}
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="md:hidden absolute top-10 left-0 w-full bg-white shadow-lg z-10 p-4"
+                        className="md:hidden absolute top-10 left-2 w-full bg-white shadow-lg z-10 p-4"
 
                     >
                         <ul className="flex flex-col space-y-4">

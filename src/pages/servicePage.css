@@ -35,12 +35,7 @@
     font-size: 1.75rem;
 }
 
-.content-container {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
+
 
 .image-container {
     background-size: cover;
@@ -77,9 +72,7 @@
     margin-bottom: 0.5rem;
 }
 
-.details-section {
-    margin: 2rem auto;
-}
+
 
 .details-section h1 {
     font-size: 1.75rem;

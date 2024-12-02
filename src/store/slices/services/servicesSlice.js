@@ -8,7 +8,6 @@ currentService:serviceData[0],
   },
   reducers: {
     selectSerivce: (state, action) => {
-      console.log(action.payload,"abi")
       const selectedService = serviceData.find(service => service.id === action.payload);
       if (selectedService) {
           state.currentService = selectedService; // Set the entire object
