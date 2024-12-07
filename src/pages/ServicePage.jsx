@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import Navbar from '../components/Navbar'
 import './servicePage.css'
-import Slider from '../components/Slider'
+import Portfolio from '../components/Portfolio'
 const ServicePage = () => {
     const currentService = useSelector((state) => state.services.currentService)
 
@@ -12,7 +12,7 @@ const ServicePage = () => {
                 <div className="services-bg">
                     <Navbar />
 
-                    <div className="service-header">
+                    <div className="service-header ">
                         <h1>{currentService.title}</h1>
                         <div className="breadcrumb">
                             <a href='/'>Home</a>
@@ -22,24 +22,16 @@ const ServicePage = () => {
                     </div>
                 </div>
 
-                <div className="content-container w-[90vw] m-auto">
-                    <div
-
-                    >
-                        <Slider />
-                    </div>
-
-
-                </div>
-                <div className="services-list max-w-[90vw] m-auto">
+                
+                <div className="services-list max-w-[90vw] m-auto mt-6">
                     <div className="details-section ">
-                        <h1>{currentService.title}</h1>
+                        <h1 className='text-[#8A7C56]'>{currentService.title}</h1>
                         <p>
                             {currentService.description}
                         </p>
                     </div>
                 </div>
-
+                {currentService.id === 2 && <Portfolio/>}
 
             </div>
 

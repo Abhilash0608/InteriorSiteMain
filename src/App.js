@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Aboutus from './components/AboutUs';
-import ContactUs from './components/ContactUs';
 import Hero from './components/Hero';
 import OurServices from './components/OurServices';
 import Slider from './components/Slider';
@@ -39,6 +38,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="services" element={<ServicePage />} />
           <Route path="products" element={<ProductsPage />} />
+
         </Routes>
         <div className="whatsapp-icon">
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">

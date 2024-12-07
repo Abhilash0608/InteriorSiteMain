@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import logo from '../assets/logo.svg'
 import { NavLinks, serviceData } from '../utils/servicesData';
 import { useLocation } from 'react-router-dom';
 import CustomDropdown from './CustomDropdown';
@@ -8,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { selectSerivce } from '../store/slices/services/servicesSlice';
 import Logo from './Logo';
 import NavLinksList from './NavLinksList';
-import MobileMenu from './MobileMenu';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [showSubMenu, setShowSubMenu] = useState(false);
